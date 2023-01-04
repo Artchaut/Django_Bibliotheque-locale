@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Author List</h1>
+
+{% if author_list %}
+  <ul>
+
+  {% for author in author_list %}
+    <li>
+      <a href="{{ author.get_absolute_url }}">
+      {{ author }} ({{author.date_of_birth}} - {% if author.date_of_death %}{{author.date_of_death}}{% endif %})
+      </a>
+    </li>
+    {% if perms.catalog.can_change_author %}- <a href="{% url 'author-update' author.id %}">Modifier</a>  {% endif %} {% if perms.catalog.can_delete_author %}- <a href="{% url 'author-delete' author.id %}">Supprimer -</a>  {% endif %}
+  {% endfor %}
+ </ul>
+ <br>
+ <p> {% if perms.catalog.can_add_author %}- <a href="{% url 'author-create' %}">Ajouter un auteur</a> -{% endif %} </p>
+{% else %}
+  <p>There are no authors available.</p>
+{% endif %}
+        
+        
+        
+{% endblock %}
