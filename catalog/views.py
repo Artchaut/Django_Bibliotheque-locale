@@ -14,6 +14,15 @@ def index(request):
 
     # Available books (status = 'a')
     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
+    
+    # On loan books (status = 'o')
+    num_instances_onloan = BookInstance.objects.filter(status__exact='o').count()
+    
+    # Reserved books (status = 'r')
+    num_instances_reserved = BookInstance.objects.filter(status__exact='r').count()
+    
+    # Maintenance books (status = 'm')
+    num_instances_maintenance = BookInstance.objects.filter(status__exact='m').count()
 
     # The 'all()' is implied by default.
     num_authors = Author.objects.count()
