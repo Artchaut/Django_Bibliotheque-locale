@@ -15,5 +15,5 @@
     <li><strong>Copies disponibles:</strong> {{ num_instances_available }}</li>
     <li><a href="{% url 'authors' %}"><strong>Auteurs:</strong></a> {{ num_authors }}</li>
  </ul>
-  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+  <p>Vous avez visité cette page à {{ num_visits }} reprise{{ num_visits|pluralize }}.</p>
 {% endblock %}

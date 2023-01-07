@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Author List</h1>
+<h1>Liste des auteurs</h1>
 
 {% if author_list %}
   <ul>
@@ -19,7 +19,7 @@
  <br>
  <p> {% if perms.catalog.can_add_author %}- <a href="{% url 'author-create' %}">Ajouter un auteur</a> -{% endif %} </p>
 {% else %}
-  <p>There are no authors available.</p>
+  <p>Il n'y a aucun auteur ici.</p>
 {% endif %}
         
         

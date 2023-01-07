@@ -20,10 +20,10 @@
                <li><a href="{% url 'authors' %}">Tous les auteurs</a></li>
 	       {% if user.is_authenticated %}
        		 <li>User: {{ user.get_username }}</li>
-	     	 <li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
-    		 <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+	     	 <li><a href="{% url 'my-borrowed' %}">Mes livres</a></li>
+    		 <li><a href="{% url 'logout' %}?next={{ request.path }}">Déconnection</a></li>
                {% else %}
-    		 <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+    		 <li><a href="{% url 'login' %}?next={{ request.path }}">Connexion</a></li>
   	       {% endif %}
            </ul>
 
@@ -32,7 +32,7 @@
            <ul class="sidebar-nav">
            <li>Staff</li>
            {% if perms.catalog.can_mark_returned %}
-           <li><a href="{% url 'all-borrowed' %}">All borrowed</a></li>
+           <li><a href="{% url 'all-borrowed' %}">Tous les emprunts</a></li>
            {% endif %}
            </ul>
             {% endif %}
@@ -48,13 +48,13 @@
       	        <div class="pagination">
           	    <span class="page-links">
                		 {% if page_obj.has_previous %}
-                	    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                	    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">précédent</a>
                		 {% endif %}
                		 <span class="page-current">
                 	    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                		 </span>
              	       	 {% if page_obj.has_next %}
-                	    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                	    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">suivant</a>
               	         {% endif %}
         	    </span>
 	        </div>

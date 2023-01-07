@@ -1,9 +1,9 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Renew: {{ book_instance.book.title }}</h1>
-  <p>Borrower: {{ book_instance.borrower }}</p>
-  <p {% if book_instance.is_overdue %} class="text-danger"{% endif %}>Due date: {{ book_instance.due_back }}</p>
+  <h1>Renouveler: {{ book_instance.book.title }}</h1>
+  <p>Possesseur: {{ book_instance.borrower }}</p>
+  <p {% if book_instance.is_overdue %} class="text-danger"{% endif %}>Doit être rendu: {{ book_instance.due_back }}</p>
 
   <form action="" method="post">
     {% csrf_token %}

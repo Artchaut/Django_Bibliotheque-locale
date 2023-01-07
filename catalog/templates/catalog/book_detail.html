@@ -1,10 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Title: {{ book.title }}</h1>
+  <h1>Titre: {{ book.title }}</h1>
  
-  <p><strong>Author:</strong> <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
-  <p><strong>Summary:</strong> {{ book.summary }}</p>
+  <p><strong>Auteur:</strong> <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p> 
+  <p><strong>Résumé:</strong> {{ book.summary }}</p>
   <p><strong>ISBN:</strong> {{ book.isbn }}</p>
   <p><strong>Genre:</strong> {{ book.genre.all|join:", " }}</p>
 
@@ -17,9 +17,9 @@
         {{ copy.get_status_display }}
       </p>
       {% if copy.status != 'a' %}
-        <p><strong>Due to be returned:</strong> {{ copy.due_back }}</p>
+        <p><strong>Doit être rendu:</strong> {{ copy.due_back }}</p>
       {% endif %}
-      <p><strong>Imprint:</strong> {{ copy.imprint }}</p>
+      <p><strong>Exemplaires:</strong> {{ copy.imprint }}</p>
       <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
     {% endfor %}
   </div>

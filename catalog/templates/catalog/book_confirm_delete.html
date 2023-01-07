@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h1>Delete Book</h1>
+<h1>Supprimer le livre</h1>
 
-<p>Are you sure you want to delete the book: {{ book }}?</p>
+<p>Etes vous sûr de vouloir supprimer ce livre : {{ book }}?</p>
 
 <form action="" method="POST">
   {% csrf_token %}
-  <input type="submit" value="Yes, delete.">
+  <input type="submit" value="Oui, supprimer.">
 </form>
 
 {% endblock %}

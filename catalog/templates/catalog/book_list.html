@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Book List</h1>
+  <h1>Liste des livres</h1>
   {% if book_list %}
   <ul>
     {% for book in book_list %}
@@ -12,9 +12,9 @@
     {% endfor %}
   </ul>
   <br>
-  <p> {% if perms.catalog.can_add_book %}- <a href="{% url 'book-create' %}">Ajouter un auteur</a>  -{% endif %} </p>
+  <p> {% if perms.catalog.can_add_book %}- <a href="{% url 'book-create' %}">Ajouter un livre</a>  -{% endif %} </p>
   {% else %}
-    <p>There are no books in the library.</p>
+    <p>Il n'y a aucun livre ici.</p>
   {% endif %}
 {% endblock %}
 
