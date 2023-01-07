@@ -19,7 +19,7 @@
         <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
             <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span class="fs-4">Biibliothèque Locale</span>
+            <span class="fs-4">Bibliothèque Locale</span>
           </a>
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
@@ -75,10 +75,11 @@
         </div>
           
   {% endblock %}
-
+<div>
     {% block content %}
     {% endblock %}
-
+</div>  
+<div>
     {% block pagination %}
    	  {% if is_paginated %}
           <div class="pagination">
@@ -96,6 +97,7 @@
 	        </div>
 	    {% endif %}
 	  {% endblock %}
+<div>
 
   {% load static %}
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
