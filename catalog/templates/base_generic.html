@@ -127,7 +127,7 @@
         </div>
           
   {% endblock %}
-      
+  <main>
   <div class="col-sm-10 ">
     {% block content %}
     {% endblock %}
@@ -149,10 +149,13 @@
 	        </div>
 	    {% endif %}
 	  {% endblock %}
-
          </div>
     </div>
   </div>
+  <main>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'js/sidebars.js' %}"></script>
 </body>
 </html>
 
