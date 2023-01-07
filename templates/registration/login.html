@@ -3,15 +3,14 @@
 {% block content %}
 
   {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
+    <p>Votre pseudo ou votre mot de passe est incorrect. Veuillez réesayer.</p>
   {% endif %}
 
   {% if next %}
     {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
+      <p>Votre compte ne possède pas d'accès au site Admin. Pour continuer, connecter vous avec un compte administateur.</p>
     {% else %}
-      <p>Please login to see this page.</p>
+      <p>Connectez-vous pour accéder à cette page.</p>
     {% endif %}
   {% endif %}
 
@@ -32,7 +31,7 @@
   </form>
 
   {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+  <p><a href="{% url 'password_reset' %}">Mot de passe oublié ?</a></p>
 
 {% endblock %}
 
