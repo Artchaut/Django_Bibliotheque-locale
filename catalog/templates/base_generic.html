@@ -5,14 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  
-  <link href="{% static 'css/bootstrap.min.css' %} " rel="stylesheet">
-
-  
+    
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <link href="{% static 'css/sidebars.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <meta name="google-site-verification" content="Ok_KiaJd7Z5Msfpxf-YYqMnQ6BGRJykqy_xuTO9IXDQ" />
 </head>
 <body>
@@ -99,7 +97,7 @@
 	    {% endif %}
 	  {% endblock %}
 
-  
+  {% load static %}
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
   <script src="{% static 'js/sidebars.js' %}"></script>
