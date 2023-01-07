@@ -3,8 +3,9 @@
 {% block content %}
  <!-- Add additional CSS in static file -->
  {% load static %}
- <link rel="stylesheet" href="{% static 'css/styles.css' %}">
- <h1>Accueil de la bibliothèque locale</h1>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<main>
+  <h1>Accueil de la bibliothèque locale</h1>
   <p>Bienvenue à la bibliothèque locale, un site web développé par <em>Mozilla Developer Network</em> en partenariat avec <em>Artichaut</em>!</p>
   <h2>Contenu dynamique</h2>
   <p>La bibliothèque dispose des enregistrements suivants:</p>
@@ -14,6 +15,7 @@
     <li><strong>Copies:</strong> {{ num_instances }}</li>
     <li><strong>Copies disponibles:</strong> {{ num_instances_available }}</li>
     <li><a href="{% url 'authors' %}"><strong>Auteurs:</strong></a> {{ num_authors }}</li>
- </ul>
+  </ul>
   <p>Vous avez visité cette page à {{ num_visits }} reprise{{ num_visits|pluralize }}.</p>
+<main>
 {% endblock %}
