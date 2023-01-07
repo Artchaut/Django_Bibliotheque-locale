@@ -19,7 +19,7 @@
                <li><a href="{% url 'books' %}">Tous les livres</a></li>
                <li><a href="{% url 'authors' %}">Tous les auteurs</a></li>
 	       {% if user.is_authenticated %}
-       		 <li>User: {{ user.get_username }}</li>
+       		 <li>Utilisateur: {{ user.get_username }}</li>
 	     	 <li><a href="{% url 'my-borrowed' %}">Mes livres</a></li>
     		 <li><a href="{% url 'logout' %}?next={{ request.path }}">Déconnection</a></li>
                {% else %}
