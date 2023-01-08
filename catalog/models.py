@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse # Cette fonction est utilisée pour formater les URL
 from django.contrib.auth.models import User
 from datetime import date
+from django.utils.html import mark_safe
 
 
 # Create your models here.
@@ -27,7 +28,7 @@ class Book(models.Model):
     # Le type de l'objet Author est déclré comme une chaîne de caractère car
     # la classe d'objet Author n'a pas encore été déclarée dans le fichier
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-    image = models.ImageField(upload_to='static/images/%Y/%m/%d', blank=True, height_field= 150, width_field=232.5)
+    cover = models.ImageField(upload_to='images/%Y/%m/%d', blank=True, height_field= 150, width_field=232.5)
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
     isbn = models.CharField('ISBN', max_length=13, help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>')
 
@@ -46,6 +47,9 @@ class Book(models.Model):
     def __str__(self):
         """Fonction requise par Django pour manipuler les objets Book dans la base de données."""
         return self.title
+    
+    def img_preview(self): #new
+        return mark_safe(f'<img src = "{self.cover.url}" width = "232.5"/>')
 
     def get_absolute_url(self):
         """Cette fonction est requise pas Django, lorsque vous souhaitez détailler le contenu d'un objet."""
