@@ -27,7 +27,7 @@ class Book(models.Model):
     # Le type de l'objet Author est déclré comme une chaîne de caractère car
     # la classe d'objet Author n'a pas encore été déclarée dans le fichier
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-
+    image = models.ImageField(upload_to='static/images/%Y/%m/%d', blank=True, height_field= 150, width_field=232.5)
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
     isbn = models.CharField('ISBN', max_length=13, help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>')
 
@@ -50,6 +50,25 @@ class Book(models.Model):
     def get_absolute_url(self):
         """Cette fonction est requise pas Django, lorsque vous souhaitez détailler le contenu d'un objet."""
         return reverse('book-detail', args=[str(self.id)])
+    
+    """""def save(self, name, content, max_length=None):
+        
+        #Save new content to the file specified by name. The content should be
+        #a proper File object or any Python file-like object, ready to be read
+        #from the beginning.
+        
+        # Get the proper name for the file, as it will actually be saved.
+        if name is None:
+            name = content.name
+
+        if not hasattr(content, "chunks"):
+            content = File(content, name)
+
+        name = self.get_available_name(name, max_length=max_length)
+        name = self._save(name, content)
+        # Ensure that the name returned from the storage system is still valid.
+        validate_file_name(name, allow_relative_path=True)
+        return name"""""
 
 
 
