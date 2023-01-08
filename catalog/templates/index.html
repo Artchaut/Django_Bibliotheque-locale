@@ -8,7 +8,7 @@
   <p>Bienvenue à la bibliothèque locale, un site web développé par <em>Mozilla Developer Network</em> en partenariat avec <em>Artichaut</em>!</p>
   <h2>Contenu dynamique</h2>
   <p>La bibliothèque dispose des enregistrements suivants:</p>
-  <div class="col">
+  <div class="col" style="margin: 10px 0 10px 0">
     <div class="card">
       <div class="row g-0">
         <div class="col-md-4">
@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-  <div class="col">
+  <div class="col" style="margin: 10px 0 10px 0">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Copies</h5>
@@ -37,12 +37,12 @@
         <li class="list-group-item">{{ num_instances_reserved}} sont déjà réservés</li>
       </ul>
       <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <a href="{% url 'my-borrowed' %}" class="card-link">Mes livres</a>
+        <a href="{% url 'all-borrowed'%}" class="card-link">Repousser la date de remise</a>
       </div>
     </div>
   </div>
-  <div class="col">
+  <div class="col" style="margin: 10px 0 10px 0">
     <div class="card">
       <div class="row g-0">
         <div class="col-md-4">
@@ -59,7 +59,7 @@
     </div>
   </div>
 
-  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+  <div class="alert alert-primary alert-dismissible fade show" role="alert" style="margin: 10px 0 10px 0">
     <p>Vous avez visité cette page à {{ num_visits }} reprise{{ num_visits|pluralize }}.</p>
   </div>
 
