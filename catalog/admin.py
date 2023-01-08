@@ -22,7 +22,7 @@ admin.site.register(Author, AuthorAdmin)
 # Register the Admin classes for Book using the decorator
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-   list_display = ('title', 'author', 'display_genre')
+   list_display = ('title', 'author', 'display_genre', 'image')
 
 
 
