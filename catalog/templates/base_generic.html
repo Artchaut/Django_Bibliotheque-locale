@@ -112,6 +112,14 @@
                 Tous les emprunts
               </a>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">✚ Ajouter</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'book-create' %}">Ajouter un livre</a></li>
+                <li><a class="dropdown-item" href="{% url 'author-create' %}">Ajouter un auteur</a></li>
+                <li><a class="dropdown-item" href="#">Créer une instance de prêt</a></li>
+              </ul>
+            </li>
              {% endif %}
             {% endif %}  
           </ul>
@@ -139,7 +147,7 @@
   {% endblock %}
 
 <div class="container">
-    {% block navbar %} 
+    <!--{% block navbar %} 
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
       <ul class="navbar-nav">
           <li class="nav-item">
@@ -161,7 +169,7 @@
         </li>
       </ul>
     </div>
-    {% endblock %}
+    {% endblock %}-->
 
     {% block content %}
     {% endblock %}
@@ -171,13 +179,15 @@
           <div class="pagination">
           	  <span class="page-links">
                		{% if page_obj.has_previous %}
-                	    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">précédent</a>
+                	    <a class="page-item" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">précédent</a>
+                  {% else %}
+                      <a class="page-item disabled" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">précédent</a>
                		{% endif %}
                		<span class="page-current">
                 	    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                		</span>
              	    {% if page_obj.has_next %}
-                	    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">suivant</a>
+                	    <a class="page-item" href="{{ request.path }}?page={{ page_obj.next_page_number }}">suivant</a>
               	  {% endif %}
         	    </span>
 	        </div>

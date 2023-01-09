@@ -121,9 +121,13 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
+    photo = models.ImageField(upload_to='images/', blank=True,)
 
     class Meta:
         ordering = ['last_name', 'first_name']
+        
+    def img_preview(self): 
+        return mark_safe(f'<img src = "{self.photo.url}" width = "{self.photo.width}" height = "{self.photo.height}"/>')    
 
     def get_absolute_url(self):
         """Returns the url to access a particular author instance."""
@@ -132,4 +136,6 @@ class Author(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.last_name}, {self.first_name}'
+    
+
 
