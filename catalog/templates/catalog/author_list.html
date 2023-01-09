@@ -6,11 +6,11 @@
   <div class="row">
   {% if author_list %}
     {% for author in author_list %}
-        <div class="col-lg-4">
+        <div class="col-lg-4" style="margin: 15px 0 15px 0">
           {% if author.photo %}
             <svg class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" {{ author.photo }} aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Photo de {{ author }}</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
           {% else %}
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" {{ xmlns="http://www.w3.org/2000/svg" }} aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Photo indisponible</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Photo indisponible</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
           {% endif %}
           <a href="{% url author.get_absolute_url %}"><h2 class="fw-normal">{{ author }}</h2></a>
           <p class="lead">L'auteur est né en{{author.date_of_birth}} {% if author.date_of_death %} et est mort en {{author.date_of_death}}{% else %}.{% endif %})</p>
