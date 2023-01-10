@@ -241,13 +241,13 @@
           <div class="pagination">
           	  <span class="page-links">
                		{% if page_obj.has_previous %}
-                	    <a class="page-item" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">précédent</a>
+                	    <a class="page-item" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Précédent</a>
                		{% endif %}
                		<span class="page-current">
-                	    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                	    Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}.
                		</span>
              	    {% if page_obj.has_next %}
-                	    <a class="page-item" href="{{ request.path }}?page={{ page_obj.next_page_number }}">suivant</a>
+                	    <a class="page-item" href="{{ request.path }}?page={{ page_obj.next_page_number }}">Suivant</a>
               	  {% endif %}
         	    </span>
 	        </div>
