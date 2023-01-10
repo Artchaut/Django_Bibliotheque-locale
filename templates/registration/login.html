@@ -3,30 +3,35 @@
 {% block content %}
 
   {% if form.errors %}
-    <p>Votre pseudo ou votre mot de passe est incorrect. Veuillez réesayer.</p>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      Votre pseudo ou votre mot de passe est incorrect. Veuillez réesayer.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
   {% endif %}
 
   {% if next %}
     {% if user.is_authenticated %}
-      <p>Votre compte ne possède pas d'accès au site Admin. Pour continuer, connecter vous avec un compte administateur.</p>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        Votre compte ne possède pas d'accès au site Admin. Pour continuer, connecter vous avec un compte administateur.
+      </div>
     {% else %}
-      <p>Connectez-vous pour accéder à cette page.</p>
+      <p class="lead">Connectez-vous pour accéder à cette page.</p>
     {% endif %}
   {% endif %}
 
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     <table>
-      <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
+      <tr class="mb-3">
+        <td class="form-label">{{ form.username.label_tag }}</td>
+        <td class="form-control">{{ form.username }}</td>
       </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
+      <tr class="mb-3">
+        <td class="form-label">{{ form.password.label_tag }}</td>
+        <td class="form-control">{{ form.password }}</td>
       </tr>
     </table>
-    <input type="submit" value="login">
+    <input class="btn btn-primary" type="submit" value="Connection">
     <input type="hidden" name="next" value="{{ next }}">
   </form>
 
@@ -34,4 +39,5 @@
   <p><a href="{% url 'password_reset' %}">Mot de passe oublié ?</a></p>
 
 {% endblock %}
+
 

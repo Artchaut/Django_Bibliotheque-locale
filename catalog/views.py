@@ -143,7 +143,7 @@ from catalog.models import Author
 
 class AuthorCreate(CreateView):
   model = Author
-  fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
+  fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death', 'photo']
   initial = {'date_of_death': '11/06/2020'}
 
 class AuthorUpdate(UpdateView):
@@ -159,7 +159,7 @@ from catalog.models import Book
 
 class BookCreate(CreateView):
   model = Book
-  fields = ['title', 'author', 'summary', 'isbn', 'genre']
+  fields = ['title', 'author', 'summary', 'isbn', 'genre', 'cover']
   
 
 class BookUpdate(UpdateView):

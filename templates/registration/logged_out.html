@@ -1,7 +1,13 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <p>Déconnecté.e !</p>
-  <a href="{% url 'login'%}">Cliquez ici pour vous connecter.</a>
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Déconnecté.e !</h4>
+  <p>Vous avez été deconnecté.e avec succès</p>
+  <hr>
+  <a class="alert-link" href="{% url 'login'%}"><p class="mb-0">Cliquez ici pour vous connecter.</p></a>
+</div>
 {% endblock %}
+
+
 

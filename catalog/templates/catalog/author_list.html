@@ -13,15 +13,14 @@
             <svg class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Photo indisponible</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
           {% endif %}
           <a href="{{ author.get_absolute_url }}"><h2 class="fw-normal">{{ author }}</h2></a>
-          <p class="lead">L'auteur est né en{{author.date_of_birth}} {% if author.date_of_death %} et est mort en {{author.date_of_death}}{% else %}.{% endif %})</p>
+          <p class="lead">L'auteur est né en{{ author.date_of_birth}} {% if author.date_of_death %} et est mort en {{author.date_of_death}}.{% else %}.{% endif %}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
               {% if perms.catalog.can_change_author %} <a class="btn btn-sm btn-outline-secondary" href="{% url 'author-update' author.id %}">Modifier</a>  {% endif %} 
               {% if perms.catalog.can_delete_author %} <a class="btn btn-sm btn-outline-secondary" href="{% url 'author-delete' author.id %}">Supprimer</a>  {% endif %}
             </div>
-            <small class="text-muted">on verra bien</small>
           </div>
-          <p><a class="btn btn-secondary" href="#">Voir les détails &raquo;</a></p>
+          <p><a class="btn btn-secondary" style="margin-top: 7px; background-color: #0d6efd;" href="#">Voir les détails &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     {% endfor %}
   {% else %}
