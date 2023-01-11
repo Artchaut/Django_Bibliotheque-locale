@@ -11,6 +11,7 @@ main {
   height: -webkit-fill-available;
   overflow-x: auto;
   overflow-y: hidden;
+  margin: 0 150px 0 150px;
 }
 
 .dropdown-toggle { outline: 0; }

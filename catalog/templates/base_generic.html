@@ -136,7 +136,7 @@
     </symbol>
   </svg>
 
-<nav>
+<header>
   {% block navbar %}
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
@@ -150,13 +150,12 @@
     </div>
   </div>
   {% endblock %}
-</nav>
-
-<main class="d-flex flex-nowrap" style="height: auto; max_height=2000vh">    
-
+</header>
+    
+<nav> 
   {% block sidebar %}
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-      <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+      <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="height: 100vh;">
         <div class="offcanvas-header">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
             <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
@@ -229,7 +228,10 @@
       </div>
     </div>
   {% endblock %}
+</nav>
 
+<main class="d-flex flex-nowrap" style="height: auto; max_height=2000vh">
+  
   {% block content %}
   {% endblock %}
 
