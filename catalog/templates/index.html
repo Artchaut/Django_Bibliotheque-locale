@@ -4,6 +4,7 @@
  <!-- Add additional CSS in static file -->
  {% load static %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<div class="container-lg">
   <h1 class="display-3">Accueil de la bibliothèque locale</h1>
   <p class="h3">Bienvenue à la bibliothèque locale, un site web développé par <em>Mozilla Developer Network</em> en partenariat avec <em>Artichaut</em>!</p>
   <h2 class="display-6">Contenu dynamique</h2>
@@ -62,6 +63,6 @@
   <div class="alert alert-primary alert-dismissible fade show" role="alert" style="margin: 10px 0 10px 0">
     <p>Vous avez visité cette page à {{ num_visits }} reprise{{ num_visits|pluralize }}.</p>
   </div>
-
+</div>
 
 {% endblock %}
