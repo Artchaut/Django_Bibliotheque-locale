@@ -19,7 +19,7 @@
           <div class="card-body">
             <a href="{% url 'books' %}"><h5 class="card-title">Livres</h5></a>
             <p class="card-text">Voici le dernier livre ajouté à la bibliothèque :</p>
-            <p class="card-text"><small class="text-muted">Il y a {{ num_books }} actuellement</small></p>
+            <p class="card-text"><small class="text-muted">Il y a {{ num_books }} livres enregistrés actuellement dans la bibliothèque</small></p>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@
           <div class="card-body">
             <h5 class="card-title"><a href="{% url 'authors' %}">Auteurs:</a></h5>
             <p class="card-text">Voici le dernier auteur ajouté :</p>
-            <p class="card-text"><small class="text-muted">Il y a {{ num_authors }} actuellement</small></p>
+            <p class="card-text"><small class="text-muted">Il y a {{ num_authors }} enregistrés actuellement dans la bibliothèque</small></p>
           </div>
         </div>
       </div>
