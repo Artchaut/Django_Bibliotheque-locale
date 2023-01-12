@@ -32,10 +32,10 @@
         <p class="card-text">Il y a {{ num_instances }} copie{{ num_instances|pluralize }} de livre parmi cette bibliothèque.</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ num_instances_available }} sont disponibles</li>
-        <li class="list-group-item">{{ num_instances_onloan}} sont déjà empruntés</li>
-        <li class="list-group-item">{{ num_instances_maintenance}} sont en restauration</li>
-        <li class="list-group-item">{{ num_instances_reserved}} sont déjà réservés</li>
+        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_available }}</span> sont disponibles</li>
+        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_onloan}}</span> sont déjà empruntés</li>
+        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_maintenance}}</span> sont en restauration</li>
+        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_reserved}}</span> sont déjà réservés</li>
       </ul>
       <div class="card-body">
         <a href="{% url 'my-borrowed' %}" class="card-link">Mes livres</a>
