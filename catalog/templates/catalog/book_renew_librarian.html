@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 
+{% load bootstrap5 %}
+
 {% block content %}
   <h1>Renouveler: {{ book_instance.book.title }}</h1>
   <p>Possesseur: {{ book_instance.borrower }}</p>
