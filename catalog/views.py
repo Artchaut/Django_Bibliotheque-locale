@@ -50,7 +50,7 @@ from django.views import generic
 
 class BookListView(generic.ListView):
     model = Book
-    paginate_by = 10  
+    paginate_by = 9
 
 
 class BookDetailView(generic.DetailView):
@@ -60,7 +60,7 @@ class BookDetailView(generic.DetailView):
 class AuthorListView(generic.ListView):
     """Generic class-based list view for a list of authors."""
     model = Author
-    paginate_by = 7
+    paginate_by = 9
 
 
 class AuthorDetailView(generic.DetailView):
