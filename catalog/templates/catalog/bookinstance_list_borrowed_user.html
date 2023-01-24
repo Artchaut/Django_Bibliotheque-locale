@@ -9,14 +9,14 @@
     <ul>
 
       {% for bookinst in bookinstance_list %}
-      <li class="{% if bookinst.is_overdue %}text-danger{% endif %}">
+      <li style="margin: 10px 0 10px 0;" class="{% if bookinst.is_overdue %}alert alert-primary alert-dismissible fade show{% endif %}">
         <a href="{% url 'book-detail' bookinst.book.pk %}">{{ bookinst.book.title }}</a> ({{ bookinst.due_back }})
       </li>
       {% endfor %}
     </ul>
 
     {% else %}
-      <p>Vous n'avez aucun livres.</p>
+      <p class="alert alert-primary alert-dismissible fade show" role="alert" style="margin: 10px 0 10px 0">Vous n'avez aucun livres.</p>
     {% endif %}
 {% endblock %}
 

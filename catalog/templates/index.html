@@ -5,17 +5,66 @@
 {% block content %}
  <!-- Add additional CSS in static file -->
  {% load static %}
- <link rel="stylesheet" href="{% static 'css/styles.css' %}">
- <h1>Accueil de la bibliothèque locale</h1>
-  <p>Bienvenue à la bibliothèque locale, un site web développé par <em>Mozilla Developer Network</em> en partenariat avec <em>Artichaut</em>!</p>
-  <h2>Contenu dynamique</h2>
-  <p>La bibliothèque dispose des enregistrements suivants:</p>
-  <ul>
-    <li><a href="{% url 'index' %}"><strong>Accueil</strong></a></li>
-    <li><a href="{% url 'books' %}"><strong>Livres:</strong></a> {{ num_books }}</li>
-    <li><strong>Copies:</strong> {{ num_instances }}</li>
-    <li><strong>Copies disponibles:</strong> {{ num_instances_available }}</li>
-    <li><a href="{% url 'authors' %}"><strong>Auteurs:</strong></a> {{ num_authors }}</li>
- </ul>
-  <p>Vous avez visité cette page à {{ num_visits }} reprise{{ num_visits|pluralize }}.</p>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<div class="container-lg">
+  <h1 class="display-3">Accueil de la bibliothèque locale</h1>
+  <p class="h3">Bienvenue à la bibliothèque locale, un site web développé par <em>Mozilla Developer Network</em> en partenariat avec <em>Artichaut</em>!</p>
+  <h2 class="display-6">Contenu dynamique</h2>
+  <p class="lead">La bibliothèque dispose des enregistrements suivants:</p>
+  <div class="col" style="margin: 15px 0 15px 0">
+    <div class="card">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></svg>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <a href="{% url 'books' %}"><h5 class="card-title">Livres</h5></a>
+            <p class="card-text">Voici le dernier livre ajouté à la bibliothèque :</p>
+            <p class="card-text"><small class="text-muted">Il y a {{ num_books }} livres enregistrés actuellement dans la bibliothèque</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col" style="margin: 15px 0 15px 0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Copies</h5>
+        <p class="card-text">Il y a {{ num_instances }} copie{{ num_instances|pluralize }} de livre parmi cette bibliothèque.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_available }}</span> sont disponibles</li>
+        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_onloan}}</span> sont déjà empruntés</li>
+        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_maintenance}}</span> sont en restauration</li>
+        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_reserved}}</span> sont déjà réservés</li>
+      </ul>
+      <div class="card-body">
+        <a href="{% url 'my-borrowed' %}" class="card-link">Mes livres</a>
+        <a href="{% url 'all-borrowed'%}" class="card-link">Repousser la date de remise</a>
+      </div>
+    </div>
+  </div>
+  <div class="col" style="margin: 15px 0 15px 0">
+    <div class="card">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></svg>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'authors' %}">Auteurs:</a></h5>
+            <p class="card-text">Voici le dernier auteur ajouté :</p>
+            <p class="card-text"><small class="text-muted">Il y a {{ num_authors }} enregistrés actuellement dans la bibliothèque</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-primary alert-dismissible fade show" role="alert" style="margin: 10px 0 10px 0">
+    <p>Vous avez visité cette page à {{ num_visits }} reprise{{ num_visits|pluralize }}.</p>
+  </div>
+</div>
+
 {% endblock %}

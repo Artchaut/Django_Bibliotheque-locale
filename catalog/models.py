@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse # Cette fonction est utilisée pour formater les URL
 from django.contrib.auth.models import User
 from datetime import date
+from django.utils.html import mark_safe
 
 
 # Create your models here.
@@ -27,7 +28,7 @@ class Book(models.Model):
     # Le type de l'objet Author est déclré comme une chaîne de caractère car
     # la classe d'objet Author n'a pas encore été déclarée dans le fichier
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-
+    cover = models.ImageField(upload_to='images/', blank=True,)
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
     isbn = models.CharField('ISBN', max_length=13, help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>')
 
@@ -39,17 +40,39 @@ class Book(models.Model):
     def display_genre(self):
         """Create a string for the Genre. This is required to display genre in Admin."""
         return ', '.join(genre.name for genre in self.genre.all()[:3])
-
+        
     display_genre.short_description = 'Genre'
 
         
     def __str__(self):
         """Fonction requise par Django pour manipuler les objets Book dans la base de données."""
         return self.title
+    
+    def img_preview(self): #new
+        return mark_safe(f'<img src = "{self.cover.url}" width = "{self.cover.width}" height = "{self.cover.height}"/>')
 
     def get_absolute_url(self):
         """Cette fonction est requise pas Django, lorsque vous souhaitez détailler le contenu d'un objet."""
         return reverse('book-detail', args=[str(self.id)])
+    
+    """""def save(self, name, content, max_length=None):
+        
+        #Save new content to the file specified by name. The content should be
+        #a proper File object or any Python file-like object, ready to be read
+        #from the beginning.
+        
+        # Get the proper name for the file, as it will actually be saved.
+        if name is None:
+            name = content.name
+
+        if not hasattr(content, "chunks"):
+            content = File(content, name)
+
+        name = self.get_available_name(name, max_length=max_length)
+        name = self._save(name, content)
+        # Ensure that the name returned from the storage system is still valid.
+        validate_file_name(name, allow_relative_path=True)
+        return name"""""
 
 
 
@@ -98,9 +121,13 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
+    photo = models.ImageField(upload_to='images/', blank=True,)
 
     class Meta:
         ordering = ['last_name', 'first_name']
+        
+    def img_preview(self): 
+        return mark_safe(f'<img src = "{self.photo.url}" width = "{self.photo.width}" height = "{self.photo.height}"/>')    
 
     def get_absolute_url(self):
         """Returns the url to access a particular author instance."""
@@ -109,4 +136,6 @@ class Author(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.last_name}, {self.first_name}'
+    
+
 
