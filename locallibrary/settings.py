@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-h*d1&30ydh&h8+
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 
-ALLOWED_HOSTS = [artichaut.eu.pythonanywhere.com]
+ALLOWED_HOSTS = ['artichaut.eu.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
