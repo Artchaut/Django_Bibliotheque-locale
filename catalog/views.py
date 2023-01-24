@@ -2,8 +2,32 @@ from django.shortcuts import render
 
 # Create your views here.
 
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import UserSerializer, GroupSerializer
+
 
 from catalog.models import Book, Author, BookInstance, Genre
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
 
 def index(request):
     """View function for home page of site."""
@@ -14,6 +38,15 @@ def index(request):
 
     # Available books (status = 'a')
     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
+    
+    # On loan books (status = 'o')
+    num_instances_onloan = BookInstance.objects.filter(status__exact='o').count()
+    
+    # Reserved books (status = 'r')
+    num_instances_reserved = BookInstance.objects.filter(status__exact='r').count()
+    
+    # Maintenance books (status = 'm')
+    num_instances_maintenance = BookInstance.objects.filter(status__exact='m').count()
 
     # The 'all()' is implied by default.
     num_authors = Author.objects.count()
@@ -27,6 +60,9 @@ def index(request):
         'num_books': num_books,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
+        'num_instances_onloan': num_instances_onloan,
+        'num_instances_reserved': num_instances_reserved,
+        'num_instances_maintenance': num_instances_maintenance,
         'num_authors': num_authors,
 	'num_visits': num_visits,
     }
@@ -38,7 +74,7 @@ from django.views import generic
 
 class BookListView(generic.ListView):
     model = Book
-    paginate_by = 10  
+    paginate_by = 9
 
 
 class BookDetailView(generic.DetailView):
@@ -48,7 +84,7 @@ class BookDetailView(generic.DetailView):
 class AuthorListView(generic.ListView):
     """Generic class-based list view for a list of authors."""
     model = Author
-    paginate_by = 10
+    paginate_by = 9
 
 
 class AuthorDetailView(generic.DetailView):
@@ -61,7 +97,7 @@ class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view listing books on loan to current user."""
     model = BookInstance
     template_name = 'catalog/bookinstance_list_borrowed_user.html'
-    paginate_by = 10
+    paginate_by = 7
 
     def get_queryset(self):
         return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back')
@@ -75,7 +111,7 @@ class LoanedBooksAllListView(PermissionRequiredMixin, generic.ListView):
     model = BookInstance
     permission_required = 'catalog.can_mark_returned'
     template_name = 'catalog/bookinstance_list_borrowed_all.html'
-    paginate_by = 10
+    paginate_by = 7
 
     def get_queryset(self):
         return BookInstance.objects.filter(status__exact='o').order_by('due_back')
@@ -131,8 +167,8 @@ from catalog.models import Author
 
 class AuthorCreate(CreateView):
   model = Author
-  fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
-  initial = {'date_of_death': '11/06/2020'}
+  fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death', 'photo']
+  initial = {'date_of_death': datetime.date.today()}
 
 class AuthorUpdate(UpdateView):
   model = Author
@@ -147,7 +183,7 @@ from catalog.models import Book
 
 class BookCreate(CreateView):
   model = Book
-  fields = ['title', 'author', 'summary', 'isbn', 'genre']
+  fields = ['title', 'author', 'summary', 'isbn', 'genre', 'cover']
   
 
 class BookUpdate(UpdateView):
