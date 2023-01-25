@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <a href="{% url 'books' %}"><h5 class="card-title">Livres</h5></a>
+            <h5 class="card-title"><a href="{% url 'books' %}">Livres</a></h5>
             <p class="card-text">Voici le dernier livre ajouté à la bibliothèque :</p>
             <p class="card-text"><small class="text-muted">Il y a {{ num_books }} livres enregistrés actuellement dans la bibliothèque</small></p>
           </div>
@@ -33,10 +33,10 @@
         <p class="card-text">Il y a {{ num_instances }} copie{{ num_instances|pluralize }} de livre parmi cette bibliothèque.</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_available }}</span> sont disponibles</li>
-        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_onloan}}</span> sont déjà empruntés</li>
-        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_maintenance}}</span> sont en restauration</li>
-        <li class="list-group-item"><span class="badge bg-primary rounded-pill">{{ num_instances_reserved}}</span> sont déjà réservés</li>
+        <li class="list-group-item"><span class="badge bg-green rounded-pill">{{ num_instances_available }}</span> sont disponibles</li>
+        <li class="list-group-item"><span class="badge bg-green rounded-pill">{{ num_instances_onloan}}</span> sont déjà empruntés</li>
+        <li class="list-group-item"><span class="badge bg-green rounded-pill">{{ num_instances_maintenance}}</span> sont en restauration</li>
+        <li class="list-group-item"><span class="badge bg-green rounded-pill">{{ num_instances_reserved}}</span> sont déjà réservés</li>
       </ul>
       <div class="card-body">
         <a href="{% url 'my-borrowed' %}" class="card-link">Mes livres</a>
@@ -61,7 +61,7 @@
     </div>
   </div>
 
-  <div class="alert alert-primary alert-dismissible fade show" role="alert" style="margin: 10px 0 10px 0">
+  <div class="alert alert-green alert-dismissible fade show" role="alert" style="margin: 10px 0 10px 0">
     <p>Vous avez visité cette page à {{ num_visits }} reprise{{ num_visits|pluralize }}.</p>
   </div>
 </div>

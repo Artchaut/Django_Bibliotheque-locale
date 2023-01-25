@@ -22,7 +22,7 @@
               {% if perms.catalog.can_delete_author %} <a class="btn btn-sm btn-outline-secondary" href="{% url 'author-delete' author.id %}">Supprimer</a>  {% endif %}
             </div>
           </div>
-          <p><a class="btn btn-secondary" style="margin-top: 7px; background-color: #0d6efd;" href="{{ author.get_absolute_url }}">Voir les détails &raquo;</a></p>
+          <p><a class="btn btn-secondary active-green" style="margin-top: 7px; background-color: #0d6efd;" href="{{ author.get_absolute_url }}">Voir les détails &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     {% endfor %}
   {% else %}
