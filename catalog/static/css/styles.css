@@ -130,7 +130,7 @@ h1, h2, h3, h4, h5, h6
   color: var(--head-color);
 }
 
-p, li, .list-group-item
+p, li, dd, dt, .list-group-item
 {
   color: var(--text-color);
 }
